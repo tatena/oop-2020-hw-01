@@ -8,8 +8,8 @@ public class TetrisGridTest extends TestCase {
 	public void testClear1() {
 		boolean[][] before =
 		{	
-			{true, true, false, },
-			{false, true, true, }
+			{true, true, false},
+			{false, true, true}
 		};
 		
 		boolean[][] after =
@@ -23,5 +23,95 @@ public class TetrisGridTest extends TestCase {
 
 		assertTrue( Arrays.deepEquals(after, tetris.getGrid()) );
 	}
-	
+
+	//test in handouts
+	public void testClear2() {
+		boolean[][] before =
+				{
+						{true, true, true, false, true},
+						{true, true, true, true, false},
+						{true, false, true, true, false},
+				};
+
+		boolean[][] after =
+				{
+						{true, false, true, false, false},
+						{true, true, false, false, false},
+						{false, true, false, false, false},
+				};
+
+		TetrisGrid tetris = new TetrisGrid(before);
+		tetris.clearRows();
+
+		assertTrue( Arrays.deepEquals(after, tetris.getGrid()) );
+	}
+	//no rows to clear
+	public void testClear3() {
+		boolean[][] before =
+				{
+						{true, true, false, false, true},
+						{true, true, true, true, false},
+						{false, false, true, true, false},
+				};
+
+		boolean[][] after =
+				{
+						{true, true, false, false, true},
+						{true, true, true, true, false},
+						{false, false, true, true, false},
+				};
+
+		TetrisGrid tetris = new TetrisGrid(before);
+		tetris.clearRows();
+
+		assertTrue( Arrays.deepEquals(after, tetris.getGrid()) );
+	}
+
+	//all row to clear
+	public void testClear4() {
+		boolean[][] before =
+				{
+						{true, true, true, true, true},
+						{true, true, true, true, true},
+						{true, true, true, true, true}
+				};
+
+		boolean[][] after =
+				{
+						{false, false, false, false, false},
+						{false, false, false, false, false},
+						{false, false, false, false, false}
+				};
+
+		TetrisGrid tetris = new TetrisGrid(before);
+		tetris.clearRows();
+
+		assertTrue( Arrays.deepEquals(after, tetris.getGrid()) );
+	}
+
+	public void testClear5() {
+		boolean[][] before =
+				{
+						{true, true, true, true, true, true},
+						{false, true, true, true, true, true},
+						{true, true, true, false, true, true},
+						{false, true, true, true, true, true},
+						{true, true, true, true, true, true}
+				};
+
+		boolean[][] after =
+				{
+						{true, true, false, false, false, false},
+						{false, true, false, false, false, false},
+						{true, false, false, false, false, false},
+						{false, true, false, false, false, false},
+						{true, true, false, false, false, false}
+				};
+
+
+		TetrisGrid tetris = new TetrisGrid(before);
+		tetris.clearRows();
+
+		assertTrue( Arrays.deepEquals(after, tetris.getGrid()) );
+	}
 }

@@ -61,6 +61,29 @@ public class StringCodeTest extends TestCase {
 		assertEquals(3, StringCode.maxRun("1112233"));
 	}
 
-	// Need test cases for stringIntersect
-	
+	// stringIntersect
+
+	public void testIntersect1 () {
+		assertEquals(true, StringCode.stringIntersect("Hello world", "Bye world", 6));
+		assertEquals(false, StringCode.stringIntersect("blablu", "bleblo", 3));
+		assertEquals(false, StringCode.stringIntersect("11111", "22", 1));
+		assertEquals(true, StringCode.stringIntersect("333333333", "22223338811", 2));
+	}
+
+	public void testIntersect2 () {
+		assertEquals(false, StringCode.stringIntersect("qwertyuiopasdfgh", "jklzxcvbnmmnbvcxz", 3));
+		assertEquals(false, StringCode.stringIntersect("1111111111111111111111111111111", "00000000", 5));
+		assertEquals(true, StringCode.stringIntersect("sameStringStringSize", "sameStringStringSize", 20));
+		assertEquals(true, StringCode.stringIntersect("aaaaaaaa bs  ssssss", "bbbbbb bbnnnnnnnnnnnn", 1));
+	}
+
+	//empty strings, same strings, len greater than string size, spaces in string
+	public void testIntersect3 () {
+		assertEquals(false, StringCode.stringIntersect("", "", 6));
+		assertEquals(false, StringCode.stringIntersect("aaaaaa", "", 5));
+		assertEquals(false, StringCode.stringIntersect("", "bbbb", 1));
+		assertEquals(true, StringCode.stringIntersect("a", "a", 1));
+		assertEquals(false, StringCode.stringIntersect("b", "b", 2));
+		assertEquals(false, StringCode.stringIntersect("c cc", "ccc", 3));
+	}
 }

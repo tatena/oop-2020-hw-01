@@ -84,4 +84,5 @@ public class Point {
 		// Note: here we == compare doubles, which is not a good practice
 		return (other.x==x && other.y==y);
 	}
+
 }
